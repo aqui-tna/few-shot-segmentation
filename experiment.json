@@ -96,7 +96,7 @@
             "cmd": "python run.py --mode=eval",
             "main": "run.py",
             "steps": [
-                "training"
+                "testing"
             ],
             "args_lib": "argparse",
             "args": [
@@ -108,31 +108,26 @@
                   "input": true,
                   "dest": "mode",
                   "ex_has_default": false,
-                  "default": null,
+                  "default": "eval",
                   "type": "str",
                   "mandatory": true
-              },
-              {
-                  "names": [
-                      "--device",
-                      "-d"
-                  ],
-                  "input": true,
-                  "dest": "device",
-                  "ex_has_default": false,
-                  "default": null,
-                  "type": "float",
-                  "mandatory": false
               }
           ],
             "ins": [
                 {
                 "type": "dir",
-                "location": "datasets",
-                "artifact": "dataset",
+                "location": "few_shot_segmentation",
+                "artifact": "model",
                 "ex_from": "conf",
-                "ex_in_repo": true
+                "ex_in_repo": false
                 },
+                {
+                    "type": "dir",
+                    "location": "datasets",
+                    "artifact": "dataset",
+                    "ex_from": "conf",
+                    "ex_in_repo": true
+                    },
                 {
                   "type": "dir",
                   "location": "/home/deeplearning/Abhijit/nas_drive/Abhijit/WholeBody/CT_ce/Data/Visceral",
@@ -148,28 +143,7 @@
                     "artifact": "dataset",
                     "ex_from": "conf",
                     "ex_in_repo": false
-                },
-                {
-                  "type": "dir",
-                  "location": "saved_models",
-                  "artifact": "model",
-                  "ex_from": "conf",
-                  "ex_in_repo": true
-              },
-              {
-                  "type": "dir",
-                  "location": "logs",
-                  "artifact": "logs",
-                  "ex_from": "conf",
-                  "ex_in_repo": false
-              },
-              {
-                  "type": "dir",
-                  "location": "experiments",
-                  "artifact": "model",
-                  "ex_from": "conf",
-                  "ex_in_repo": false
-              }
+                }
             ]
             }
       ],
@@ -186,7 +160,7 @@
       ]
     },
     "ex_hyperparams": {
-      "from_cmd": ["List of metrics read from cmd line"],
+      "from_cmd": [],
       "config_files": [
           {
               "name": "settings.ini",
