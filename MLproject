@@ -1,0 +1,13 @@
+name: abhi4ssj/few-shot-segmentation
+conda_env: conda_few-shot-segmentation.yaml
+entry_points:
+  step0_training:
+    command: python run.py --mode=train
+  step1_testing:
+    parameters:
+      mode:
+        type: str
+        default: eval
+    command: python run.py --mode=eval
+  main:
+    command: python ex_mlflow_multistep_main.py
